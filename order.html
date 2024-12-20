@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Caffein 8</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .order-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .order-item label {
+                flex: 1;
+            }
+            .order-item input {
+                width: 60px;
+                margin-left: 10px;
+            }
+            .item-note {
+                width: 200px;
+                margin-top: 5px;
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="home">
+            <h1>Welcome to Elsa's Caffe</h1>
+            <p>Nikmati Waktu, Nikmati Kopi, Nikmati Hidup</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="./index.html#home">Home</a></li>
+                <li><a href="./index.html#about">About Us</a></li>
+                <li><a href="./menu.html">Menu</a></li>
+                <li><a href="./order.html">Order In Table</a></li>
+                <li><a href="./suggestions.html">Suggestions</a></li>
+            </ul>
+        </nav>
+        <section id="order">
+            <h2>Order In Table</h2>
+            <form id="orderForm">
+                <label for="orderName">Nama:</label>
+                <input type="text" id="orderName" name="orderName" required />
+                
+                <label for="orderEmail">Email:</label>
+                <input type="email" id="orderEmail" name="orderEmail" required />
+                
+                <label for="tableNumber">Nomor Meja:</label>
+                <input type="number" id="tableNumber" name="tableNumber" min="1" required />
+
+                <h3>Pilih Menu:</h3>
+                <div id="itemsContainer">
+                    <div class="order-item">
+                        <label>Espresso - Rp. 25.000</label>
+                        <input type="number" class="item-quantity" data-item="Espresso" data-price="25000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan"/>
+                    </div>
+                    <div class="order-item">
+                        <label>Americano - Rp. 30.000</label>
+                        <input type="number" class="item-quantity" data-item="Americano" data-price="30000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Americano" />
+                    </div>
+                    <div class="order-item">
+                        <label>Cappuccino - Rp. 33.000</label>
+                        <input type="number" class="item-quantity" data-item="Cappuccino" data-price="33000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Cappuccino" />
+                    </div>
+                    <div class="order-item">
+                        <label>Latte - Rp. 33.000</label>
+                        <input type="number" class="item-quantity" data-item="Latte" data-price="33000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Latte" />
+                    </div>
+                    <div class="order-item">
+                        <label>Mocha - Rp. 35.000</label>
+                        <input type="number" class="item-quantity" data-item="Mocha" data-price="35000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Mocha" />
+                    </div>
+                    <div class="order-item">
+                        <label>Cold Brew - Rp. 38.000</label>
+                        <input type="number" class="item-quantity" data-item="Cold Brew" data-price="38000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Cold Brew" />
+                    </div>
+                    <div class="order-item">
+                        <label>Macchiato - Rp. 36.000</label>
+                        <input type="number" class="item-quantity" data-item="Macchiato" data-price="36000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Macchiato" />
+                    </div>
+                    <div class="order-item">
+                        <label>Affogato - Rp. 40.000</label>
+                        <input type="number" class="item-quantity" data-item="Affogato" data-price="40000" min="0" value="0" />
+                        <input type="text" class="item-note" placeholder="catatan" data-item="Affogato" />
+                    </div>
+                </div>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="BCA Transfer">BCA Transfer</option>
+                </select>
+                
+                <button type="submit">Place Order</button>
+            </form>
+            <p id="orderConfirmation"></p>
+            <p id="bankDetails" style="display: none;">
+                <strong>Transfer to BCA:</strong><br>
+                Account Number: <strong>123-456-7890</strong><br>
+                Account Name: <strong>Elsa's Caffe</strong><br>
+                Please complete your payment within 24 hours.
+            </p>
+        </section>
+        <footer>
+            <p>&copy; 2024 Elsa's Caffe. Yukkk Ngopi!!.</p>
+        </footer>
+
+        <script>
+            document.getElementById('orderForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('orderName').value;
+                const email = document.getElementById('orderEmail').value;
+                const tableNumber = document.getElementById('tableNumber').value;
+                const quantities = document.querySelectorAll('.item-quantity');
+                const notes = document.querySelectorAll('.item-note');
+                const paymentMethod = document.getElementById('paymentMethod').value;
+
+                let total = 0;
+                let totalItems = 0;
+                let itemDetails = '';
+
+                quantities.forEach((input, index) => {
+                    const quantity = parseInt(input.value);
+                    const itemName = input.getAttribute('data-item');
+                    const price = parseInt(input.getAttribute('data-price'));
+                    const note = notes[index].value;
+
+                    if (quantity > 0) {
+                        totalItems += quantity;
+                        const itemTotal = price * quantity;
+                        total += itemTotal;
+                        itemDetails += `- ${itemName} (x${quantity}): Rp. ${itemTotal.toLocaleString('id-ID')}\n  Notes: ${note}\n`;
+                    }
+                });
+
+                if (totalItems === 0) {
+                    alert('Please select at least one item with a quantity greater than zero.');
+                    return;
+                }
+
+                const confirmationMessage = `Thank you, ${name}!\nYour order for Table ${tableNumber} has been received.\n\nItems Ordered:\n${itemDetails}\nTotal Items: ${totalItems}\nTotal Payment: Rp. ${total.toLocaleString('id-ID')}\nWe will send the details to ${email}.`;
+
+                document.getElementById('orderConfirmation').innerText = confirmationMessage;
+
+                if (paymentMethod === 'BCA Transfer') {
+                    document.getElementById('bankDetails').style.display = 'block';
+                } else {
+                    document.getElementById('bankDetails').style.display = 'none';
+                }
+
+                document.getElementById('orderForm').reset();
+            });
+        </script>
+    </body>
+</html>

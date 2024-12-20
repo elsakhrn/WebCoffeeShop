@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Caffein 8</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header id="home">
+            <h1>Welcome to Elsa's Caffe</h1>
+            <p>Nikmati Waktu, Nikmati Kopi, Nikmati Hidup</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="./index.html#home">Home</a></li>
+                <li><a href="./index.html#about">About Us</a></li>
+                <li><a href="./menu.html">Menu</a></li>
+                <li><a href="./order.html">Order In Table</a></li>
+                <li><a href="./suggestions.html">Suggestions</a></li>
+            </ul>
+        </nav>
+        <section id="suggestions">
+            <h2>Kirimkan Saranmu</h2>
+            <form id="suggestionForm">
+                <label for="suggestionName">Nama:</label>
+                <input
+                    type="text"
+                    id="suggestionName"
+                    name="suggestionName"
+                    required
+                />
+                <label for="suggestionMessage">Pesan:</label>
+                <textarea
+                    id="suggestionMessage"
+                    name="suggestionMessage"
+                    required
+                ></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <p id="suggestionConfirmation"></p>
+        </section>
+        <footer>
+            <p>&copy; 2024 Elsa's Caffe. Yukkk Ngopi!!</p>
+        </footer>
+    </body>
+</html>

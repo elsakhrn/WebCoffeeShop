@@ -1,0 +1,156 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f0f7;
+    color: #334155;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #322424;
+    color: white;
+    padding: 20px;
+}
+
+nav {
+    background-color: #0f0108;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 68px 20px 20px 20px;
+}
+
+#about {
+    max-width: 60%;
+    margin: auto;
+}
+
+#about img {
+    height: 380px;
+    position: relative;
+    left: -20px;
+    bottom: -20px;
+    box-shadow: 20px 20px #ccc;
+}
+
+#about p {
+    text-align: justify;
+}
+
+#about .about-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6rem;
+}
+
+footer {
+    background-color: #10040a;
+    color: white;
+    padding: 10px;
+    margin-top: 6rem;
+    width: 100%;
+    bottom: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label,
+form input,
+form select,
+form textarea,
+form button {
+    margin: 5px;
+}
+
+form input,
+form select,
+form textarea {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #622442d0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #6c1d45;
+}
+
+.menu-item {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.menu-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.menu-item .deskripsi {
+    color: #64748b;
+    padding: 0 10px;
+}
+
+.menu-item .harga {
+    color: #334155;
+}
+
+.ticket-images img {
+    width: 100px;
+    margin: 10px;
+}
+
+.ticket-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-container {
+    display: flex;
+    width: fit-content;
+}
